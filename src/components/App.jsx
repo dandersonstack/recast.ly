@@ -1,13 +1,14 @@
-var App = () => (
+var App = (props) => (
   <div>
     <Nav />
     <div className="col-md-7">
-      <VideoPlayer/>
+      <VideoPlayer video={props.videos[0]}/>
     </div>
     <div className="col-md-5">
-      <VideoList/>
+      <VideoList videos={props.videos}/>
     </div>
   </div>
+  
 );
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
