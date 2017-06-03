@@ -4,6 +4,16 @@ body {
   background: #f1f1f1;
 }
 
+.foo{
+  background-color: #00ffff; 
+  color: #000000;
+}
+
+.bar {
+  background-color: #0000ff; 
+  color: #000000;
+}
+
 .navbar {
   background: #fff;
   margin-bottom: 20px;

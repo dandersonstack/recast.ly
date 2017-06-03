@@ -1,7 +1,7 @@
 var Nav = (props) => (
   <nav className="navbar">
-    <div className="col-md-6 col-md-offset-3">
-      <Search searchQuery={props.searchQuery}/>
+    <div className="col-md-8 col-md-offset-3">
+      <Search searchQuery={props.searchQuery} autoPlayToggle={props.autoPlayToggle}/>
     </div>
   </nav>
 );

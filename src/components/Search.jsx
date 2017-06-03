@@ -5,6 +5,17 @@ var Search = (props) => (
       onClick={ ()=> { props.searchQuery($('.form-control').val()); } }>
       <span className="glyphicon glyphicon-search"></span>
     </button>
+    <button className="foo btn hidden-sm-down" 
+      // onClick={ ()=> { props.autoPlayToggle($(this).val()); } }>
+      onClick={ ()=> { console.log('auto toggle here'); 
+                        $("button").click(function() {
+                          $(this).toggleClass('foo');
+                        }); 
+                      } 
+              }>
+      <span className="glyphicon glyphicon-play"></span>
+    </button>
+
   </div> 
 );
 
