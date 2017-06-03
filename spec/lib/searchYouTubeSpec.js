@@ -36,7 +36,6 @@ describe('searchYouTube', function() {
 
   // Sinon temporarily hijacks all outgoing AJAX requests with `useFakeXMLHttpRequest`
   // letting us synchronously inspect any request made by `searchYouTube`
-
   beforeEach(function() {
     requests = [];
     xhr = sinon.useFakeXMLHttpRequest();

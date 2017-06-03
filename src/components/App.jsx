@@ -9,6 +9,23 @@ class App extends React.Component {
     };
   
     this.handleVideoSelectedInput = this.handleVideoSelectedInput.bind(this);
+    this.getSearchResults = this.getSearchResults.bind(this);
+    this.updateFromSearchResults = this.updateFromSearchResults.bind(this);
+  }
+
+  getSearchResults(searchText) {
+
+    let data = {
+      part: 'snippet',
+      key: window.YOUTUBE_API_KEY,
+      q: searchText,
+      maxResults: 10,
+      type: 'video',
+      videoEmbeddable: 'true'
+    };
+
+    window.searchYouTube(data, this.updateFromSearchResults);
+    // change state to rerender
   }
 
   handleVideoSelectedInput(videoSelected) {
@@ -17,12 +34,21 @@ class App extends React.Component {
     });
   }
 
+  updateFromSearchResults(data) {
+    this.setState({
+      videos: data.items,
+      currentVideo: data.items[0]
+    });
+  }
+
   render () {
     return ( 
       <div>
-        <Nav />
+        <Nav searchQuery={this.getSearchResults} />
         <div className="col-md-7">
-          <VideoPlayer video={this.state.currentVideo}/>
+          <VideoPlayer 
+            video={this.state.currentVideo}
+          />
         </div>
         <div className="col-md-5">
           <VideoList 
