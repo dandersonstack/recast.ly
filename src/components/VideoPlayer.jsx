@@ -1,14 +1,36 @@
-var VideoPlayer = (props) => (
-  <div className="video-player">
-    <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={"https://www.youtube.com/embed/" + props.video.id.videoId} allowFullScreen></iframe>
+class VideoPlayer extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    document.getElementsByClassName('embed-responsive-item');
+    let onPlayerReady = function(event) {
+      var embedCode = event.target.getVideoEmbedCode();
+      event.target.playVideo();
+      if (document.getElementById('embed-responsive-item')) {
+        document.getElementById('embed-responsive-item').innerHTML = embedCode;
+      }
+    };
+  }
+
+  render() {
+    return (
+    <div className="video-player">
+      <div className="embed-responsive embed-responsive-16by9">
+        <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + this.props.video.id.videoId + '?&autoplay=' + this.props.autoPlay} allowFullScreen height='4000px'
+          ></iframe>
+        }
+      </div>
+      <div className="video-player-details">
+        <h3>{this.props.video.snippet.title}</h3>
+        <div>{this.props.video.snippet.description}</div>
+      </div>
     </div>
-    <div className="video-player-details">
-      <h3>{props.video.snippet.title}</h3>
-      <div>{props.video.snippet.description}</div>
-    </div>
-  </div>
-);
+    );
+  }
+}
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
